@@ -84,8 +84,8 @@ public class EventBus {
         }
     }
 
-
     public synchronized void unregister(Object subscriber) {
         subscriptionsByEventType.clear();
     }
+
 }
