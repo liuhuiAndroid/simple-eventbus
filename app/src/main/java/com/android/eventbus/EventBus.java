@@ -1,5 +1,7 @@
 package com.android.eventbus;
 
+import com.android.ioc.Subscribe;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +39,8 @@ public class EventBus {
         CopyOnWriteArrayList<SubscribeMethod> subscribeMethods = null;
 
         for (Method method : methods) {
-            if (method.getName().startsWith("toast")) {
+            Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
+            if (subscribeAnnotation != null) {// Subscribe.class
                 SubscribeMethod subscribeMethod = null;
                 Class<?>[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes.length == 1) {
@@ -66,8 +69,10 @@ public class EventBus {
     private void postEvent(Object eventType) {
         CopyOnWriteArrayList<SubscribeMethod> subscribeMethods = subscriptionsByEventType.get(eventType.getClass());
 
-        for (final SubscribeMethod subscribeMethod : subscribeMethods) {
-            invokeMethod(eventType, subscribeMethod);
+        if (subscribeMethods != null) {
+            for (final SubscribeMethod subscribeMethod : subscribeMethods) {
+                invokeMethod(eventType, subscribeMethod);
+            }
         }
     }
 

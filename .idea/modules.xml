@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eventbus-annotation/eventbus-annotation.iml" filepath="$PROJECT_DIR$/eventbus-annotation/eventbus-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eventbus-compiler/eventbus-compiler.iml" filepath="$PROJECT_DIR$/eventbus-compiler/eventbus-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/simple-eventbus.iml" filepath="$PROJECT_DIR$/simple-eventbus.iml" />
     </modules>
   </component>

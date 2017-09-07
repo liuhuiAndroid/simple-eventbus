@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.ioc.Subscribe;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe
     public void toast(ToastEvent toastEvent) {
         Toast.makeText(MainActivity.this, toastEvent.getContent(), Toast.LENGTH_SHORT).show();
     }
