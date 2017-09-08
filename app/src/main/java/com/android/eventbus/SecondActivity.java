@@ -1,12 +1,15 @@
 package com.android.eventbus;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by lh on 2017/9/8.
+ */
+
+public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void testEventBus(View view) {
-        EventBus.getDefault().post(new ToastEvent("测试EventBus MainActivity"));
-    }
-
-    public void testJump(View view) {
-        startActivity(new Intent(MainActivity.this, SecondActivity.class));
+        EventBus.getDefault().post(new ToastEvent("测试EventBus SecondActivity"));
     }
 
     @Override
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void toast(ToastEvent toastEvent) {
-        Toast.makeText(MainActivity.this, toastEvent.getContent(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(SecondActivity.this, toastEvent.getContent(), Toast.LENGTH_SHORT).show();
     }
 
 }
